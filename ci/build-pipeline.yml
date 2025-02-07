@@ -4,17 +4,16 @@
 
 trigger:
 - main
-
-pool:
-    vmImage: 'ubuntu-latest'
-
+resources:
+- repo: self
 variables:
   tag: '$(Build.BuildId)'
   dockerImageTag: 'latest' 
   dockerServiceconnection: 'Callmedharam@DockerHub'  # Ensure this is correct 
   imagerepository: 'callmedharam/staticweb'
   dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-
+pool:
+    vmImage: 'ubuntu-latest'
 stages:
 - stage: Login
   displayName: Login into DockerHub

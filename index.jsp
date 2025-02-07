@@ -7,7 +7,7 @@
 
 </head>
 <body>
-    <h1> build id TAG 4589 8967 ooooouuuuuuRahulShettyAcademy.com Learning Complete path </h1>
+    <h1> build id RahulShettyAcademy.com Learning Complete path </h1>
     <h2>Learn  Automation tools + Devops Tools CI/CD pipelines in course from Scratch</h2>
     <h3>Pushing image to docker hubb,Added repository docker file issues  path aaded </h3>
     <h2>Good Luck and we are almost done with the course. Thank you!welcom moved Docker File</h2>
