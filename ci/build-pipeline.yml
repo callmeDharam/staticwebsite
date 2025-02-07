@@ -39,7 +39,7 @@ stages:
     - task: Docker@2
       displayName: Build Docker image
       inputs:
-        command: 'buildAndpush'
+        command: 'buildAndpush' 
         Dockerfile: '$(dockerfile)'
         containerRegistry: '$(dockerServiceconnection)'
         repository: '$(imagerepository)'
