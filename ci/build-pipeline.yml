@@ -43,7 +43,7 @@ stages:
         repository: '$(imagerepository)'
         tags: |
           $(Build.BuildId)
-          $(dockerImageTag)
+         # $(dockerImageTag)
 - stage: Push
 
   displayName: Pushing Image 
