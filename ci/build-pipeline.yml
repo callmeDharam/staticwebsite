@@ -43,9 +43,9 @@ stages:
         Dockerfile: '$(dockerfile)'
         containerRegistry: '$(dockerServiceconnection)'
         repository: '$(imagerepository)'
-        tags: |
-          latest
-          $(Build.BuildId)
+        # tags: |
+        #   latest
+        #   $(Build.BuildId)
   
         #  $(dockerImageTag)
          
@@ -64,8 +64,8 @@ stages:
       #  Dockerfile: $(imagerepository)
         command:  'push'
         repository: $(imagerepository)
-        tags: |
-            latest
-            $(Build.BuildId)
+        # tags: |
+        #     latest
+        #     $(Build.BuildId)
                
     
