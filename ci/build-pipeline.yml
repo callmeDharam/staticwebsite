@@ -13,7 +13,7 @@ variables:
   tag: '$(Build.BuildId)'
   dockerImageTag: 'latest' 
   dockerServiceconnection: 'Callmedharam@DockerHub'  # Ensure this is correct 
-  imagerepository: 'staticweb'
+  imagerepository: 'docker.io/library/callmedharam/staticweb'
   dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
 pool:
     vmImage: 'ubuntu-latest'
