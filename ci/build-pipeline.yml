@@ -43,7 +43,9 @@ stages:
         Dockerfile: '$(dockerfile)'
         containerRegistry: '$(dockerServiceconnection)'
         repository: '$(imagerepository)'
-        tags: $(tag):$(dockerImageTag)
+        tags: |
+          $(tag)
+          $(dockerImageTag)
          
 - stage: Push
 
@@ -56,8 +58,11 @@ stages:
       displayName: Push Docker image
       inputs:
         containerRegistry: $(dockerServiceconnection)
-        repository: $(imagerepository)
+        
       #  Dockerfile: $(imagerepository)
         command:  push
-        tags: $(tag):$(dockerImageTag)       
+        repository: $(imagerepository)
+        tags: |
+          $(tag)
+          $(dockerImageTag)       
     
