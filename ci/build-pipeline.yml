@@ -43,6 +43,7 @@ stages:
         tags: |
           $(tag)
 - stage: Push
+
   displayName: Pushing Image 
   jobs:
   - job: Push
@@ -56,5 +57,6 @@ stages:
         containerRegistry: '$(dockerServiceconnection)'
         repository: '$(imagerepository)'
         tags: |
-          $(tag)         
+          $(tag)
+          latest         
     
