@@ -11,7 +11,7 @@ pool:
 variables:
   tag: '$(Build.BuildId)'
   dockerServiceconnection: 'Callmedharam@DockerHub'  # Ensure this is correct 
-  imagerepository: 'callmedharam/staticweb'
+  imagerepository: 'docker.io/callmedharam/staticweb'
   dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
 
 stages:
