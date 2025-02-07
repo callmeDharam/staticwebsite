@@ -10,6 +10,6 @@
     <h1> build id reddyppa huh RahulShettyAcademy.com Learning Complete path </h1>
     <h2>Learn  Automationtag tools bh + Devops Tools CI/CD pipelines in course from Scratch</h2>
     <h3>Pushing image to docker hubb,Added repository docker file issues  path aaded </h3>
-    <h2>Good Luck bbbbbbbb and we are almost done with the course. Thank you!welcom moved Docker File</h2>
+    <h2>Good Luck bbbbbbbb  husd and we are almost done with the course. Thank you!welcom moved Docker File</h2>
 </body>
 </html>
