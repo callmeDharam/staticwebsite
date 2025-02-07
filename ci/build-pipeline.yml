@@ -6,7 +6,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+    vmImage: 'ubuntu-latest'
 
 variables:
   tag: '$(Build.BuildId)'
@@ -44,6 +44,7 @@ stages:
         tags: |
           $(Build.BuildId)
          # $(dockerImageTag)
+         
 - stage: Push
 
   displayName: Pushing Image 
