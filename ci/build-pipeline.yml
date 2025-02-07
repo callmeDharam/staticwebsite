@@ -43,6 +43,7 @@ stages:
         Dockerfile: '$(dockerfile)'
         containerRegistry: '$(dockerServiceconnection)'
         repository: '$(imagerepository)'
+        
 
         tags: |
           latest
