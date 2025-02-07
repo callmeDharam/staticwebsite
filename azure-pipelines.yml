@@ -10,8 +10,19 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
+  dockerServiceconnection: 'SanataniDocker'
+  imagerepository: 'callmedharam/staticweb'
 
 stages:
+- stage: 
+  displayName: Login into DockerHub
+  jobs:
+  - job: Login
+    displayName: Login Into Docker Hub
+    steps:
+    - task: Docker@2
+      inputs:
+        command: 'login'
 - stage: Build
   displayName: Build image
   jobs:
