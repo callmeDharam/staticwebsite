@@ -10,7 +10,7 @@ pool:
 
 variables:
   tag: '$(Build.BuildId)'
-  dockerServiceconnection: 'Callmedharam@DockerHub'  # Ensure this is correct
+  dockerServiceconnection: 'Callmedharam@DockerHub'  # Ensure this is correct 
   imagerepository: 'callmedharam/staticweb'
   dockerfile: '$(Build.SourcesDirectory)/static-website/Dockerfile'
 
@@ -38,7 +38,7 @@ stages:
       inputs:
         command: build
         Dockerfile: 'Dockerfile'
-        containerRegistry: '$(dockerfile)'
+        containerRegistry: '$(dockerServiceconnection)'
         repository: '$(imagerepository)'
         tags: |
           $(tag)
