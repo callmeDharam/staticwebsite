@@ -1,5 +1,5 @@
 # Use an official Tomcat image from Docker Hub
-FROM tomcat:8.5
+FROM tomcat:10
 
 # Set the working directory inside the container
 WORKDIR /usr/local/tomcat/webapps/ROOT
