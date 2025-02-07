@@ -37,7 +37,7 @@ stages:
       displayName: Build Docker image
       inputs:
         command: build
-        Dockerfile: 'Dockerfile'
+        Dockerfile: '$(dockerfile)'
         containerRegistry: '$(dockerServiceconnection)'
         repository: '$(imagerepository)'
         tags: |
