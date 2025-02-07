@@ -52,10 +52,10 @@ stages:
     - task: Docker@2
       displayName: Push Docker image
       inputs:
-        command: Push
-        Dockerfile: '$(imagerepository)'
         containerRegistry: '$(dockerServiceconnection)'
         repository: '$(imagerepository)'
+        Dockerfile: '$(imagerepository)'
+        command: Push
         tags: |
           $(tag)
           latest         
