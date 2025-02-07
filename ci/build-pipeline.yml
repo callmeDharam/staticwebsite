@@ -59,7 +59,7 @@ stages:
       inputs:
         containerRegistry: $(dockerServiceconnection)
         repository: $(imagerepository)
-        Dockerfile: $(imagerepository)
+      #  Dockerfile: $(imagerepository)
         command:  Push
         tags: |
           $(tag)
