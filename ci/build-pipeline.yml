@@ -45,7 +45,7 @@ stages:
         repository: '$(imagerepository)'
         tags: |
           $(tag)
-          $(dockerImageTag)
+     #     $(dockerImageTag)
          
 - stage: Push
 
@@ -63,5 +63,5 @@ stages:
         command:  Push
         tags: |
           $(tag)
-          $(dockerImageTag)       
+     #     $(dockerImageTag)       
     
