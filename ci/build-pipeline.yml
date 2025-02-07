@@ -40,10 +40,11 @@ stages:
       displayName: Build Docker image
       inputs:
         command: 'buildAndpush'
+        
         Dockerfile: '$(dockerfile)'
         containerRegistry: '$(dockerServiceconnection)'
         repository: '$(imagerepository)'
-        
+
         tags: |
           latest
           $(Build.BuildId)
