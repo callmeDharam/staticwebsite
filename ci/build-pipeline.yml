@@ -6,19 +6,20 @@ trigger:
 - main
 resources:
 - repo: self
+
+
+
 variables:
   tag: '$(Build.BuildId)'
   dockerImageTag: 'latest' 
   dockerServiceconnection: 'Callmedharam@DockerHub'  # Ensure this is correct 
   imagerepository: 'callmedharam/staticweb'
   dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-pool:
-    vmImage: 'ubuntu-latest'
+# pool:
+#     vmImage: 'ubuntu-latest'
 stages:
 - stage: Login
   displayName: Login into DockerHub
-  pool:
-    vmImage: 'ubuntu-latest'
   jobs:
   - job: Login
     displayName: Login Into Docker Hub
@@ -31,8 +32,6 @@ stages:
 
 - stage: Build
   displayName: Build image
-  pool:
-    vmImage: 'ubuntu-latest'
   jobs:
   - job: Build
     displayName: Build
@@ -50,9 +49,7 @@ stages:
          
 - stage: Push
 
-  displayName: Pushing Image
-  pool:
-    vmImage: 'ubuntu-latest' 
+  displayName: Pushing Image 
   jobs:
   - job: Push
     displayName: Push
