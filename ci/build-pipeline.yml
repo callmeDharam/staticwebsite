@@ -17,6 +17,8 @@ pool:
 stages:
 - stage: Login
   displayName: Login into DockerHub
+  pool:
+    vmImage: 'ubuntu-latest'
   jobs:
   - job: Login
     displayName: Login Into Docker Hub
@@ -29,6 +31,8 @@ stages:
 
 - stage: Build
   displayName: Build image
+  pool:
+    vmImage: 'ubuntu-latest'
   jobs:
   - job: Build
     displayName: Build
@@ -46,7 +50,9 @@ stages:
          
 - stage: Push
 
-  displayName: Pushing Image 
+  displayName: Pushing Image
+  pool:
+    vmImage: 'ubuntu-latest' 
   jobs:
   - job: Push
     displayName: Push
