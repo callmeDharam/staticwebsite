@@ -57,6 +57,6 @@ stages:
         Dockerfile: '$(imagerepository)'
         command: Push
         tags: |
-          $(tag)
+          $(Build.BuildId)
           latest         
     
