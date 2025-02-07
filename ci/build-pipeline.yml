@@ -10,6 +10,7 @@ pool:
 
 variables:
   tag: '$(Build.BuildId)'
+  dockerImageTag: 'latest' 
   dockerServiceconnection: 'Callmedharam@DockerHub'  # Ensure this is correct 
   imagerepository: 'docker.io/callmedharam/staticweb'
   dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
