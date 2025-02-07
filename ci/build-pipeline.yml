@@ -57,7 +57,7 @@ stages:
         containerRegistry: '$(dockerServiceconnection)'
         repository: '$(imagerepository)'
         Dockerfile: '$(imagerepository)'
-        command: 'push'
+        command:  Push
         tags: |
           $(Build.BuildId)
           $(dockerImageTag)       
