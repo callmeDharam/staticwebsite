@@ -39,33 +39,33 @@ stages:
     - task: Docker@2
       displayName: Build Docker image
       inputs:
-        command: 'build'
+        command: 'buildAndpush'
         Dockerfile: '$(dockerfile)'
         containerRegistry: '$(dockerServiceconnection)'
         repository: '$(imagerepository)'
-        # tags: |
-        #   latest
-        #   $(Build.BuildId)
+        tags: |
+          latest
+          $(Build.BuildId)
   
-        #  $(dockerImageTag)
          
-- stage: Push
+         
+# - stage: Push
 
-  displayName: Pushing Image 
-  jobs:
-  - job: Push
-    displayName: Push
-    steps:
-    - task: Docker@2
-      displayName: Push Docker image
-      inputs:
-        containerRegistry: $(dockerServiceconnection)
+#   displayName: Pushing Image 
+#   jobs:
+#   - job: Push
+#     displayName: Push
+#     steps:
+#     - task: Docker@2
+#       displayName: Push Docker image
+#       inputs:
+#         containerRegistry: $(dockerServiceconnection)
         
-      #  Dockerfile: $(imagerepository)
-        command:  'push'
-        repository: $(imagerepository)
-        # tags: |
-        #     latest
-        #     $(Build.BuildId)
+#       #  Dockerfile: $(imagerepository)
+#         command:  'push'
+#         repository: $(imagerepository)
+#         # tags: |
+#         #     latest
+#         #     $(Build.BuildId)
                
     
