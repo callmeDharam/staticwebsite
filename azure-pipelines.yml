@@ -10,7 +10,7 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
-  dockerServiceconnection: 'callmeDharam'
+  dockerServiceconnection: 'Callmedharam@DockerHub'
   imagerepository: 'callmedharam/staticweb'
 
 stages:
