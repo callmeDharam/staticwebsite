@@ -62,7 +62,7 @@ stages:
         containerRegistry: $(dockerServiceconnection)
         
       #  Dockerfile: $(imagerepository)
-        command:  push
+        command:  'push'
         repository: $(imagerepository)
         tags: |
             latest
