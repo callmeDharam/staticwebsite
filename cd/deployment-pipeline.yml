@@ -1,0 +1,79 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  terraformVersion: '1.1.7'
+  acrName: 'myacr'  # Replace with your ACR name
+  imageName: 'static-website'
+  imageTag: '$(Build.BuildId)'
+
+steps:
+- script: |
+    echo "Installing Terraform"
+    wget https://releases.hashicorp.com/terraform/$(terraformVersion)/terraform_$(terraformVersion)_linux_amd64.zip
+    unzip terraform_$(terraformVersion)_linux_amd64.zip
+    sudo mv terraform /usr/local/bin/
+  displayName: 'Install Terraform'
+
+- script: |
+    echo "Initializing Terraform"
+    terraform init
+  displayName: 'Terraform Init'
+
+- script: |
+    echo "Creating Terraform Plan"
+    terraform plan -out=tfplan
+  displayName: 'Terraform Plan'
+
+- task: ManualValidation@0
+  timeoutInMinutes: 1440 # 24 hours
+  inputs:
+    notifyUsers: 'your-email@example.com'
+    instructions: 'Please review the Terraform plan and approve the deployment.'
+    onTimeout: 'reject'
+
+- script: |
+    echo "Applying Terraform Plan"
+    terraform apply tfplan
+  displayName: 'Terraform Apply'
+
+- task: KubernetesManifest@0
+  inputs:
+    action: 'deploy'
+    namespace: 'default'
+    manifests: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: static-website
+      spec:
+        replicas: 2
+        selector:
+          matchLabels:
+            app: static-website
+        template:
+          metadata:
+            labels:
+              app: static-website
+          spec:
+            containers:
+            - name: static-website
+              image: $(acrName).azurecr.io/$(imageName):$(imageTag)
+              ports:
+              - containerPort: 80
+      ---
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: static-website
+      spec:
+        type: LoadBalancer
+        ports:
+        - port: 80
+          targetPort: 80
+        selector:
+          app: static-website
+  displayName: 'Deploy Static Website to AKS'

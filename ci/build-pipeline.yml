@@ -1,0 +1,36 @@
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  acrName: 'myacr'  # Replace with your ACR name
+  imageName: 'static-website'
+  imageTag: '$(Build.BuildId)'
+
+steps:
+- task: UseNode@1
+  inputs:
+    version: '16.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    echo "Installing dependencies"
+    npm install
+  displayName: 'Install Dependencies'
+
+- script: |
+    echo "Building static website"
+    npm run build
+  displayName: 'Build Static Website'
+
+- task: Docker@2
+  inputs:
+    containerRegistry: '$(acrName)'
+    repository: '$(imageName)'
+    command: 'buildAndPush'
+    Dockerfile: 'static-website/Dockerfile'
+    tags: '$(imageTag)'
+  displayName: 'Build and Push Docker Image'
