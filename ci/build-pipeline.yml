@@ -13,7 +13,7 @@ variables:
   tag: '$(Build.BuildId)'
   dockerImageTag: 'latest' 
   dockerServiceconnection: 'Callmedharam@DockerHub'  # Ensure this is correct 
-  imagerepository: 'docker.io/library/callmedharam/staticweb'
+  imagerepository: 'callmedharam/staticweb'
   dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
 pool:
     vmImage: 'ubuntu-latest'
@@ -43,9 +43,9 @@ stages:
         Dockerfile: '$(dockerfile)'
         containerRegistry: '$(dockerServiceconnection)'
         repository: '$(imagerepository)'
-    #     tags: |
-    #  #     $(tag)
-    #  #     $(dockerImageTag)
+        tags: |
+           $(tag)
+          # $(dockerImageTag)
          
 - stage: Push
 
@@ -57,11 +57,11 @@ stages:
     - task: Docker@2
       displayName: Push Docker image
       inputs:
-        containerRegistry: '$(dockerServiceconnection)'
-        repository: '$(imagerepository)'
-        Dockerfile: '$(imagerepository)'
+        containerRegistry: $(dockerServiceconnection)
+        repository: $(imagerepository)
+        Dockerfile: $(imagerepository)
         command:  Push
-    #     tags: |
-    #   #    $(tag)
-    #  #     $(dockerImageTag)       
+        tags: |
+          $(tag)
+          $(dockerImageTag)       
     
